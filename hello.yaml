@@ -1,0 +1,18 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: hello
+  namespace: vela-system
+spec:
+  components:
+    - name: hello
+      type: webservice
+      properties:
+        image: nginxdemos/hello
+        port: 80
+      traits:
+        - type: ingress
+          properties:
+            domain: localhost
+            http:
+              "/": 80
